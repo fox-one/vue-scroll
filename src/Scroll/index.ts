@@ -7,7 +7,7 @@ export type Scroll = ReturnType<typeof defineComponent> & {
 }
 
 (Scroll as Scroll).install = (app: VueConstructor<Vue>): void => {
-  app.component(Scroll.name, Scroll);
+  app.component('FScroll', Scroll);
 };
 
 export default Scroll;

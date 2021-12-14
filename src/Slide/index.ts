@@ -7,7 +7,7 @@ export type Slide = ReturnType<typeof defineComponent> & {
 }
 
 (Slide as Slide).install = (app: VueConstructor<Vue>): void => {
-  app.component(Slide.name, Slide);
+  app.component('FSlide', Slide);
 };
 
 export default Slide;

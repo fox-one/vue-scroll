@@ -15,7 +15,8 @@ import ObserveDOM from '@better-scroll/observe-dom';
 import { mediaQuery, generateUUID, scrollWrapperHeight } from '@utils/helper';
 
 @Component({
-  name: 'FScroll'
+  name: 'FScroll',
+  inheritAttrs: true
 })
 export default class extends Vue {
   @Prop({ default: [], type: Array }) public data!: any[];
