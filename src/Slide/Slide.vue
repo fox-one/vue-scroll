@@ -34,6 +34,8 @@ export default class extends Vue {
   @Prop({ default: 3000, type: Number }) public interval!: number;
   @Prop({ default: 20, type: Number }) public refreshDelay!: number;
 
+  private classes = classnames('slide');
+
   public scroll;
 
   public currentPageIndex = 0;
@@ -44,10 +46,6 @@ export default class extends Vue {
 
   public get showDots() {
     return this.pageCount > 1;
-  }
-
-  public get classes() {
-    return classnames('f-slide');
   }
 
   public mounted() {
@@ -61,7 +59,7 @@ export default class extends Vue {
     if (!this.$refs.wrapper) return;
 
     BScroll.use(Slide);
-    this.scroll = new BScroll('.wrapper', {
+    this.scroll = new BScroll(`.${this.classes('wrapper')}`, {
       probeType: this.probeType,
       click: this.click,
       scrollX: true,

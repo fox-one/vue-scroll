@@ -70,7 +70,7 @@ export default defineComponent({
     const currentX = ref(0);
     const currentY = ref(0);
 
-    watch([props.data, props.height], () => {
+    watch([() => props.data, () => props.height], () => {
       setTimeout(() => {
         scroll.value?.refresh();
       }, props.refreshDelay);
