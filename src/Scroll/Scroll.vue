@@ -20,7 +20,7 @@ import { mediaQuery, generateUUID, scrollWrapperHeight } from '@utils/helper';
 export default class extends Vue {
   @Prop({ default: [], type: Array }) public data!: any[];
   @Prop({
-    default: scrollWrapperHeight(0),
+    default: '100vh',
     type: String,
   })
   public height!: string;
