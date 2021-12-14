@@ -8650,10 +8650,10 @@ gulp-sourcemaps@3.0.0:
     strip-bom-string "^1.0.0"
     through2 "^2.0.0"
 
-gulp-ts-alias@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gulp-ts-alias/-/gulp-ts-alias-1.1.0.tgz#d7edf4f0ddc403d7dbbba2e8e39d096fa177f487"
-  integrity sha512-Kx4a0ZRh1sk5/uERvAxNIueXJ1qBvyJ9BGCV31QjB7FyTWFZl1lkuefXKsKzowBqNFZmETOFYTGqQMyPCkhiTw==
+gulp-ts-alias@1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/gulp-ts-alias/-/gulp-ts-alias-1.3.0.tgz#ff0f8c8002afd54bb394eec5d0b481e2487b5268"
+  integrity sha512-acPlJi5mG8ZgVdKefF1t4Z4XaWXsoIJDsCj/r5AsQAW6JQbErN98SXO58vX0+zFQ+2riiWAzQn+rUVX39EXfng==
   dependencies:
     o-stream "^0.2.2"
 

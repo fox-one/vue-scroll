@@ -14,7 +14,10 @@ pnpm i -S @foxone/vue-scroll
 
 ### Usage
 ```js
-import UI from '@foxone/vue-scroll';
+import Vue from "vue";
+import Scroll from '@foxone/vue-scroll';
+
+Vue.use(Scroll);
 ```
 
 ## Dev
