@@ -2,6 +2,8 @@
 
 [English](./README.md) | 简体中文
 
+[示例](https://fox-one.github.io/vue-scroll/)
+
 ## 快速开始
 ### 安装
 ```shell
