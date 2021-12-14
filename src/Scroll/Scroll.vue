@@ -109,6 +109,7 @@ export default class extends Vue {
 
     if (this.pullup) {
       this.scroll.on('scrollEnd', () => {
+        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
         if (!!this.scroll.y && this.scroll.y <= this.scroll.maxScrollY + 50) {
           this.$emit('pullup');
         }

@@ -16,7 +16,7 @@ export const mediaQuery = () => {
 };
 
 export function isIOS() {
-  const ua = navigator.userAgent?.toLowerCase();
+  const ua = navigator?.userAgent?.toLowerCase() ?? '';
   return /\(i[^;]+;( U;)? CPU.+Mac OS X/i.test(ua);
 }
 

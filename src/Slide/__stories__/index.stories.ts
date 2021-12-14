@@ -22,13 +22,13 @@ storiesOf('Slide', module)
       FSlide
     },
     template: `<section :style="{overflow: 'hidden'}">
-      <f-slide :data="[]" loop>
-        <div :style="{ display: 'inline-block', width: '75px', textAlign: 'center', padding: '10px', border: '1px solid gold', margin: '5px' }" >{{'Hello Slide 1'}}</div>
-        <div :style="{ display: 'inline-block', width: '75px', textAlign: 'center', padding: '10px', border: '1px solid gold', margin: '5px' }">{{'Hello Slide 2'}}</div>
-        <div :style="{ display: 'inline-block', width: '75px', textAlign: 'center', padding: '10px', border: '1px solid gold', margin: '5px' }">{{'Hello Slide 3'}}</div>
-        <div :style="{ display: 'inline-block', width: '75px', textAlign: 'center', padding: '10px', border: '1px solid gold', margin: '5px' }">{{'Hello Slide 4'}}</div>
-        <div :style="{ display: 'inline-block', width: '75px', textAlign: 'center', padding: '10px', border: '1px solid gold', margin: '5px' }">{{'Hello Slide 5'}}</div>
-        <div :style="{ display: 'inline-block', width: '75px', textAlign: 'center', padding: '10px', border: '1px solid gold', margin: '5px' }">{{'Hello Slide 6'}}</div>
+      <f-slide :data="[]" >
+        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0' }" >{{'Hello Slide 1'}}</div>
+        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0' }">{{'Hello Slide 2'}}</div>
+        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0' }">{{'Hello Slide 3'}}</div>
+        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0' }">{{'Hello Slide 4'}}</div>
+        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0' }">{{'Hello Slide 5'}}</div>
+        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0' }">{{'Hello Slide 6'}}</div>
       </f-slide>
     </section>`
   }));
