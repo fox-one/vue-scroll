@@ -53,10 +53,10 @@ module.exports = {
     autoTag: false,
 
     // 发布的git仓库地址 (project git repo url)
-    git: '',
+    git: 'git@github.com:fox-one/vue-scroll.git',
 
     // 发布的npm仓库地址 (npm depository url)
-    npm: '',
+    npm: 'https://registry.npmjs.org/',
 
     preflight: {
       test: true, // 发布前是否进行单元测试 (whether or not process unit-test)

@@ -1,4 +1,3 @@
-import VueCompositionAPI from '@vue/composition-api';
 import type { VueConstructor } from 'vue';
 import Scroll from './Scroll';
 import Slide from './Slide';
@@ -7,7 +6,6 @@ install.installed = false;
 function install (Vue: VueConstructor<Vue>) {
   if (install.installed) return;
   install.installed = true;
-  Vue.use(VueCompositionAPI);
   Vue.component(Scroll.name, Scroll);
   Vue.component(Slide.name, Slide);
 }
