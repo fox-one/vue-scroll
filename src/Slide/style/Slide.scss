@@ -1,3 +1,24 @@
 .f-slide {
-  display: block;
+  &-wrapper {
+    position: relative;
+  }
+
+  &-dots {
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    &__dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin: 0 4px;
+      background: #eee;
+      border-radius: 50%;
+      &.active {
+        width: 20px;
+        border-radius: 5px;
+      }
+    }
+  }
 }

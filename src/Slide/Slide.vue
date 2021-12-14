@@ -1,14 +1,13 @@
 <template>
-  <div ref="wrapper" class="wrapper">
+  <div ref="wrapper" :class="classes('wrapper')">
     <div class="content">
       <slot />
     </div>
-    <div v-if="showDots" class="dots">
+    <div v-if="showDots" :class="classes('dots')">
       <span
         v-for="num in pageCount"
         :key="num"
-        class="dots__dot"
-        :class="{ active: currentPageIndex === num - 1 }"
+        :class="{ active: currentPageIndex === num - 1, [`${classes('dots__dot')}`]: true }"
       />
     </div>
   </div>
@@ -18,10 +17,9 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import BScroll from '@better-scroll/core';
 import Slide from '@better-scroll/slide';
+import classnames from '@utils/classnames';
 
-@Component({
-  name: 'FSlide'
-})
+@Component
 export default class extends Vue {
   @Prop({ default: [], type: Array }) public data!: any[];
   @Prop({ default: 1, type: Number }) public pageCount!: number;
@@ -46,6 +44,10 @@ export default class extends Vue {
 
   public get showDots() {
     return this.pageCount > 1;
+  }
+
+  public get classes() {
+    return classnames('f-slide');
   }
 
   public mounted() {
@@ -114,28 +116,3 @@ export default class extends Vue {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.wrapper {
-  position: relative;
-}
-
-.dots {
-  position: absolute;
-  bottom: -24px;
-  left: 50%;
-  transform: translateX(-50%);
-  &__dot {
-    display: inline-block;
-    margin: 0 4px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #eee;
-    &.active {
-      width: 20px;
-      border-radius: 5px;
-    }
-  }
-}
-</style>
