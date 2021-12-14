@@ -1,3 +1,4 @@
+
 <template>
   <div ref="wrapper" :class="classes('wrapper')">
     <div class="content">
@@ -14,103 +15,140 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import {
+  defineComponent,
+  watch,
+  PropType,
+  ref
+} from '@vue/composition-api';
 import BScroll from '@better-scroll/core';
 import Slide from '@better-scroll/slide';
 import classnames from '@utils/classnames';
 
-@Component
-export default class extends Vue {
-  @Prop({ default: [], type: Array }) public data!: any[];
-  @Prop({ default: 1, type: Number }) public pageCount!: number;
-  @Prop({ default: true, type: Boolean }) public click!: boolean;
-  @Prop({ default: 1, type: Number }) public probeType!: number;
-  @Prop({ default: false, type: Boolean }) public scrollY!: boolean;
-  @Prop({ default: false, type: Boolean }) public autoplay!: boolean;
-  @Prop({ default: false, type: Boolean }) public loop!: boolean;
-  @Prop({ default: false, type: Boolean }) public listenFlick!: boolean;
-  @Prop({ default: 400, type: Number }) public speed!: number;
-  @Prop({ default: 0.1, type: Number }) public threshold!: number;
-  @Prop({ default: 3000, type: Number }) public interval!: number;
-  @Prop({ default: 20, type: Number }) public refreshDelay!: number;
+export default defineComponent({
+  name: 'FSlide',
+  props: {
+    data: {
+      type: Array as PropType<any[]>,
+      default: () => ([])
+    },
+    pageCount: {
+      type: Number,
+      default: 1
+    },
+    probeType: {
+      type: Number,
+      default: 1
+    },
+    click: {
+      type: Boolean,
+      default: true
+    },
+    scrollY: {
+      type: Boolean,
+      default: false
+    },
+    autoplay: {
+      type: Boolean,
+      default: false
+    },
+    loop: {
+      type: Boolean,
+      default: false
+    },
+    listenFlick: {
+      type: Boolean,
+      default: false
+    },
+    speed: {
+      type: Number,
+      default: 400
+    },
+    threshold: {
+      type: Number,
+      default: 0.1
+    },
+    interval: {
+      type: Number,
+      default: 3000
+    },
+    refreshDelay: {
+      type: Number,
+      default: 20
+    },
+  },
+  setup(props) {
+    const scroll = ref();
+    const currentPageIndex = ref(0);
+    const classes = ref(classnames('slide'));
 
-  private classes = classnames('slide');
+    watch(() => props.data, () => {
+      setTimeout(() => {
+        scroll.value?.refresh();
+      }, props.refreshDelay);
+    });
 
-  public scroll;
-
-  public currentPageIndex = 0;
-
-  public get currentPage() {
-    return this.scroll?.getCurrentPage();
-  }
-
-  public get showDots() {
-    return this.pageCount > 1;
-  }
-
-  public mounted() {
+    return { scroll, currentPageIndex, classes };
+  },
+  computed: {
+    currentPage() {
+      return (this as any).scroll?.getCurrentPage();
+    },
+    showDots() {
+      return (this as any).pageCount > 1;
+    }
+  },
+  mounted() {
     this.$nextTick(() => {
       if (!this.scroll) this.init();
       else this.scroll.refresh();
     });
-  }
+  },
+  methods: {
+    init() {
+      if (!this.$refs.wrapper) return;
 
-  protected init() {
-    if (!this.$refs.wrapper) return;
+      BScroll.use(Slide);
+      this.scroll = new BScroll(`.${this.classes('wrapper')}`, {
+        probeType: this.probeType,
+        click: this.click,
+        scrollX: true,
+        scrollY: this.scrollY,
+        momentum: false,
+        bounce: false,
+        slide: {
+          loop: this.loop,
+          threshold: this.threshold,
+          speed: this.speed,
+          listenFlick: this.listenFlick,
+          autoplay: this.autoplay,
+          interval: this.interval,
+        },
+      });
 
-    BScroll.use(Slide);
-    this.scroll = new BScroll(`.${this.classes('wrapper')}`, {
-      probeType: this.probeType,
-      click: this.click,
-      scrollX: true,
-      scrollY: this.scrollY,
-      momentum: false,
-      bounce: false,
-      slide: {
-        loop: this.loop,
-        threshold: this.threshold,
-        speed: this.speed,
-        listenFlick: this.listenFlick,
-        autoplay: this.autoplay,
-        interval: this.interval,
-      },
-    });
-
-    this.scroll.on('slideWillChange', (page) => {
-      this.currentPageIndex = page.pageX;
-    });
-  }
-
-  public disable() {
-    this.scroll?.disable();
-  }
-
-  public enable() {
-    this.scroll?.enable();
-  }
-
-  public refresh() {
-    this.scroll?.refresh();
-  }
-
-  public prev() {
-    this.scroll?.prev();
-  }
-
-  public next() {
-    this.scroll?.next();
-  }
-
-  public goToPage(...args: any) {
+      this.scroll.on('slideWillChange', (page) => {
+        this.currentPageIndex = page.pageX;
+      });
+    },
+    disable() {
+      this.scroll?.disable();
+    },
+    enable() {
+      this.scroll?.enable();
+    },
+    refresh() {
+      this.scroll?.refresh();
+    },
+    prev() {
+      this.scroll?.prev();
+    },
+    next() {
+      this.scroll?.next();
+    },
+    goToPage(...args: any) {
     // eslint-disable-next-line prefer-spread
-    this.scroll?.goToPage?.apply(this.scroll, args);
+      this.scroll?.goToPage?.apply(this.scroll, args);
+    }
   }
-
-  @Watch('data')
-  public handleDataChange() {
-    setTimeout(() => {
-      this.refresh();
-    }, this.refreshDelay);
-  }
-}
+});
 </script>
