@@ -6,8 +6,8 @@ install.installed = false;
 function install (Vue: VueConstructor<Vue>) {
   if (install.installed) return;
   install.installed = true;
-  Vue.component(Scroll.name, Scroll);
-  Vue.component(Slide.name, Slide);
+  Vue.component('FScroll', Scroll);
+  Vue.component('FSlide', Slide);
 }
 
 let GlobalVue;
