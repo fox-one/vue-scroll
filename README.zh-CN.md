@@ -18,6 +18,7 @@ pnpm i -S @foxone/vue-scroll
 ```js
 import Vue from "vue";
 import Scroll from '@foxone/vue-scroll';
+import "@foxone/vue-scroll/es/index.css";
 
 Vue.use(Scroll);
 ```
