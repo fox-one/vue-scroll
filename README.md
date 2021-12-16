@@ -23,6 +23,21 @@ import "@foxone/vue-scroll/es/index.css";
 Vue.use(Scroll);
 ```
 
+```jsx
+<f-scroll
+  :data="data"
+  :pulldown="true"
+  :pullup="true"
+  @pulldown="loadData(true)"
+  @pullup="loadData"
+>
+  <section>
+    <div v-for="(item, ind) in data" :key="item.id || ind">
+      {{ item.name }}
+    </div>
+  </section>
+</f-scroll>
+```
 ## Dev
 For debugging or maintenance, you can clone the whole git repository and run the project:
 
