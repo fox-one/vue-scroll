@@ -28,6 +28,10 @@ export default defineComponent({
       type: Array as PropType<any[]>,
       default: () => ([])
     },
+    maxHeight: {
+      type: String,
+      default: ''
+    },
     height: {
       type: String,
       default: scrollWrapperHeight(0)
@@ -86,6 +90,13 @@ export default defineComponent({
   computed: {
     classes() {
       return `scroll-${generateUUID()}`;
+    },
+    heightStyle() {
+      const self = this as any;
+      if (this.maxHeight) {
+        return { maxHeight: self.maxHeight };
+      }
+      return { height: self.height };
     }
   },
   activated() {
