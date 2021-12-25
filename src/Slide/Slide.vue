@@ -23,6 +23,9 @@ import {
 } from '@vue/composition-api';
 import BScroll from '@better-scroll/core';
 import Slide from '@better-scroll/slide';
+import ObserveImage from '@better-scroll/observe-image';
+import ObserveDOM from '@better-scroll/observe-dom';
+import NestedScroll from '@better-scroll/nested-scroll';
 import classnames from '@utils/classnames';
 
 export default defineComponent({
@@ -76,6 +79,10 @@ export default defineComponent({
       type: Number,
       default: 20
     },
+    nestedId: {
+      type: [Number, String],
+      default: ''
+    }
   },
   setup(props) {
     const scroll = ref();
@@ -107,9 +114,7 @@ export default defineComponent({
   methods: {
     init() {
       if (!this.$refs.wrapper) return;
-
-      BScroll.use(Slide);
-      this.scroll = new BScroll(`.${this.classes('wrapper')}`, {
+      const options: Record<string, any> = {
         probeType: this.probeType,
         click: this.click,
         scrollX: true,
@@ -124,7 +129,21 @@ export default defineComponent({
           autoplay: this.autoplay,
           interval: this.interval,
         },
-      });
+        observeDOM: true,
+        observeImage: true,
+        nestedScroll: {
+          groupId: this.nestedId
+        }
+      };
+      BScroll.use(Slide);
+      BScroll.use(ObserveImage);
+      BScroll.use(ObserveDOM);
+      if (this.nestedId || this.nestedId === 0) {
+        BScroll.use(NestedScroll);
+      } else {
+        delete options.nestedScroll;
+      }
+      this.scroll = new BScroll(`.${this.classes('wrapper')}`, options);
 
       this.scroll.on('slideWillChange', (page) => {
         this.currentPageIndex = page.pageX;

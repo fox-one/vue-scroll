@@ -1,6 +1,6 @@
 {
   "name": "@foxone/vue-scroll",
-  "version": "0.0.12",
+  "version": "0.1.0-0",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -27,13 +27,14 @@
   "keywords": [],
   "author": "",
   "peerDependencies": {
-    "vue": "2.6.x",
-    "@vue/composition-api": "1.x.x"
+    "@vue/composition-api": "1.x.x",
+    "vue": "2.6.x"
   },
   "license": "ISC",
   "dependencies": {
     "@better-scroll/core": "~2.4.2",
     "@better-scroll/mouse-wheel": "~2.4.2",
+    "@better-scroll/nested-scroll": "~2.4.2",
     "@better-scroll/observe-dom": "~2.4.2",
     "@better-scroll/observe-image": "~2.4.2",
     "@better-scroll/pull-down": "~2.4.2",
@@ -51,7 +52,7 @@
     "@babel/preset-env": "~7.10.0",
     "@babel/preset-typescript": "~7.10.0",
     "@commitlint/cli": "8.3.5",
-    "@omni-door/cli": "~2.5.5",
+    "@omni-door/cli": "~2.5.6",
     "@omni-door/gulp-plugin-vue-sfc": "~0.1.0",
     "@storybook/addon-actions": "5.3.21",
     "@storybook/addon-console": "1.2.2",

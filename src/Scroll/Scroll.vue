@@ -18,6 +18,7 @@ import Pulldown from '@better-scroll/pull-down';
 import MouseWheel from '@better-scroll/mouse-wheel';
 import ObserveImage from '@better-scroll/observe-image';
 import ObserveDOM from '@better-scroll/observe-dom';
+import NestedScroll from '@better-scroll/nested-scroll';
 import { mediaQuery, generateUUID, scrollWrapperHeight } from '@utils/helper';
 
 export default defineComponent({
@@ -63,6 +64,10 @@ export default defineComponent({
       type: Number,
       default: 20
     },
+    nestedId: {
+      type: [Number, String],
+      default: ''
+    }
   },
   setup(props) {
     const scroll = ref();
@@ -107,13 +112,7 @@ export default defineComponent({
       if (!this.$refs.wrapper) return;
 
       const { desktop } = mediaQuery() || {};
-
-      BScroll.use(Pullup);
-      BScroll.use(Pulldown);
-      BScroll.use(MouseWheel);
-      BScroll.use(ObserveImage);
-      BScroll.use(ObserveDOM);
-      this.scroll = new BScroll(`.${this.classes}`, {
+      const options: Record<string, any> = {
         probeType: this.probeType,
         click: this.click,
         scrollX: this.scrollX,
@@ -126,7 +125,21 @@ export default defineComponent({
         },
         observeDOM: true,
         observeImage: true,
-      });
+        nestedScroll: {
+          groupId: this.nestedId
+        }
+      };
+      BScroll.use(Pullup);
+      BScroll.use(Pulldown);
+      BScroll.use(MouseWheel);
+      BScroll.use(ObserveImage);
+      BScroll.use(ObserveDOM);
+      if (this.nestedId || this.nestedId === 0) {
+        BScroll.use(NestedScroll);
+      } else {
+        delete options.nestedScroll;
+      }
+      this.scroll = new BScroll(`.${this.classes}`, options);
 
       if (this.listenScroll) {
         this.scroll.on('scroll', (pos) => {
