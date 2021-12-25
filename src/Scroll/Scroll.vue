@@ -1,6 +1,6 @@
 
 <template>
-  <div ref="wrapper" class="f-scroll-wrapper" :class="classes" :style="{ height }">
+  <div ref="wrapper" class="f-scroll-wrapper" :class="classes" :style="heightStyle">
     <slot/>
   </div>
 </template>
