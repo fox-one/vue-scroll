@@ -4,5 +4,5 @@ export default create({
   base: 'light',
   brandTitle: 'vue-scroll',
   brandUrl: 'https://github.com/fox-one/vue-scroll',
-  // brandImage: ''
+  brandImage: 'https://pando.im/favicon.png'
 });
