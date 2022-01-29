@@ -21,14 +21,14 @@ storiesOf('Slide', module)
     components: {
       FSlide
     },
-    template: `<section :style="{overflow: 'hidden'}">
-      <f-slide :data="[]" >
-        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0' }" >{{'Hello Slide 1'}}</div>
-        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0' }">{{'Hello Slide 2'}}</div>
-        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0' }">{{'Hello Slide 3'}}</div>
-        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0' }">{{'Hello Slide 4'}}</div>
-        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0' }">{{'Hello Slide 5'}}</div>
-        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0' }">{{'Hello Slide 6'}}</div>
+    template: `<section :style="{overflow: 'hidden', height: '150px'}">
+      <f-slide :data="[]" :page-count="6" loop>
+        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0', fontSize: '14px' }" >{{'Hello Slide 1'}}</div>
+        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0', fontSize: '14px' }">{{'Hello Slide 2'}}</div>
+        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0', fontSize: '14px' }">{{'Hello Slide 3'}}</div>
+        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0', fontSize: '14px' }">{{'Hello Slide 4'}}</div>
+        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0', fontSize: '14px' }">{{'Hello Slide 5'}}</div>
+        <div :style="{ display: 'inline-block', boxSizing: 'border-box', textAlign: 'center', padding: '30px 10px', border: '1px solid gold', margin: '5px 0', fontSize: '14px' }">{{'Hello Slide 6'}}</div>
       </f-slide>
     </section>`
   }));

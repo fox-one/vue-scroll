@@ -1,8 +1,10 @@
 
 <template>
-  <div ref="wrapper" :class="classes('wrapper')">
-    <div class="content">
-      <slot />
+  <div :class="classes()">
+    <div ref="wrapper" :class="classes('wrapper')">
+      <div :class="classes('content')">
+        <slot />
+      </div>
     </div>
     <div v-if="showDots" :class="classes('dots')">
       <span
@@ -23,8 +25,6 @@ import {
 } from '@vue/composition-api';
 import BScroll from '@better-scroll/core';
 import Slide from '@better-scroll/slide';
-import ObserveImage from '@better-scroll/observe-image';
-import ObserveDOM from '@better-scroll/observe-dom';
 import NestedScroll from '@better-scroll/nested-scroll';
 import classnames from '@utils/classnames';
 
@@ -129,15 +129,11 @@ export default defineComponent({
           autoplay: this.autoplay,
           interval: this.interval,
         },
-        observeDOM: true,
-        observeImage: true,
         nestedScroll: {
           groupId: this.nestedId
         }
       };
       BScroll.use(Slide);
-      BScroll.use(ObserveImage);
-      BScroll.use(ObserveDOM);
       if (this.nestedId || this.nestedId === 0) {
         BScroll.use(NestedScroll);
       } else {

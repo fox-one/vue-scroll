@@ -1,6 +1,13 @@
 .f-slide {
+  position: relative;
   &-wrapper {
-    position: relative;
+    overflow: hidden;
+    min-height: 1px;
+  }
+
+  &-content {
+    white-space: nowrap;
+    font-size: 0;
   }
 
   &-dots {
